@@ -1,12 +1,12 @@
 {
-  "name": "cse116_infectiontag_v2",
+  "name": "js",
   "version": "1.0.0",
-  "description": "A prj for cse 116, A multiplayer game modeled after infection tag",
+  "description": "Electron View",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Sean MacNamara",
   "license": "ISC"
 }
