@@ -2,11 +2,14 @@
   "name": "js",
   "version": "1.0.0",
   "description": "Electron View",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sean MacNamara",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^4.1.3"
+  }
 }
