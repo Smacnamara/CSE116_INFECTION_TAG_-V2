@@ -1,6 +1,6 @@
-const electron = require(electron)
+const electron = require('electron')
 
-const {app, BrowserWindow} = require(electron)
+const {app, BrowserWindow} = require('electron')
 
 let win //stops win from being garbage collected by JVM
 
