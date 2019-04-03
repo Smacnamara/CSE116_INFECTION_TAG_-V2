@@ -5,9 +5,9 @@ import tornado.options
 import tornado.web
 import tornado.websocket
 
-import end_game.jsongameends
-import gets_tagged.jsontagged
-import player_name_input.jsonplayername
+import jsongameends
+import jsontagged
+import jsonplayername
 
 from tornado.options import define, options
 
@@ -33,7 +33,7 @@ class UserNameHandler(tornado.web.RequestHandler):
 
     def post(self):
         content = self.request.body
-        return player_name_input.jsonplayername.jsonplayername(content)
+        return jsonplayername.jsonplayername(content)
 
 '''
 class WebSocketHandler(tornado.websocket.WebSocketHandler):
