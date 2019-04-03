@@ -22,6 +22,9 @@ class GameScene extends Phaser.Scene{
         this.walls = this.physics.add.staticGroup();
         this.player = this.physics.add.sprite(150, 400, "livePlayer")
         this.player.setCollideWorldBounds(true);
+        this.player.body.bounce.y = 1.0
+        this.player.body.bounce.x = 1.0
+
         
 
         var level = [
@@ -55,8 +58,8 @@ class GameScene extends Phaser.Scene{
     update() {
         this.physics.collide(this.player, this.walls)
 
-        this.player.body.velocity.x = 0
-        this.player.body.velocity.y = 0
+        //this.player.body.velocity.x = 0
+        //this.player.body.velocity.y = 0
 
         if (this.key_A.isDown){
             this.player.body.velocity.x = -150
