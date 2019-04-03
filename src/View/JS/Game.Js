@@ -8,7 +8,7 @@ var config = {
             gravity: {y: 200}
         },
     },
-    scene: [TitleScene]
+    scene: [TitleScene, GameScene]
 
 };
 

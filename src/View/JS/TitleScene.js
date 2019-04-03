@@ -11,7 +11,13 @@ class TitleScene extends Phaser.Scene{
     }
 
     create(){
-        this.add.sprite(0,0, "background")
+        this.add.sprite(500,500, "background")
+
+        this.playBut = this.add.sprite(500, 400, "playBut").setInteractive();
+
+        this.playBut.on("pointerdown", function(event){
+            this.scene.start('GameScene')
+        }, this)
     }
 
 }
