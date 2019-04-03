@@ -55,17 +55,13 @@ class GameScene extends Phaser.Scene{
     }
 
     update() {
-        this.physics.collide(this.player, this.walls)
-        this.physics.overlap(this.player, this.enemy, function(){
-            let xpos = this.player.x
-            let ypos = this.player.y
-            this.player.destroy()
-            this.player = this.physics.add.sprite(xpos, this.player.y, "infected")
-        },null, this)
+        //PULL GAME STATE
+
+        //UPDATE OTHER SPRITES
 
         this.player.body.velocity.x = 0
         this.player.body.velocity.y = 0
-
+        
         if (this.key_A.isDown){
             this.player.body.velocity.x = -150
         }else if (this.key_D.isDown){
@@ -77,6 +73,21 @@ class GameScene extends Phaser.Scene{
         }else if (this.key_S.isDown){
             this.player.body.velocity.y = 150;
         }
+
+        //WRITE GAMESTATE
+
+        this.physics.collide(this.player, this.walls)
+        this.physics.overlap(this.player, this.enemy, function(){
+            let xpos = this.player.x
+            let ypos = this.player.y
+            this.player.destroy()
+            this.player = this.physics.add.sprite(xpos, this.player.y, "infected")
+            //EDIT GAME STATE
+        },null, this)
+
+        
+        //SEND GAME STATE
+        
     }
 
     
