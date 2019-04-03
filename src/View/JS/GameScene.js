@@ -71,6 +71,7 @@ class GameScene extends Phaser.Scene{
             let ypos = this.player.y
             this.player.destroy()
             this.player = this.physics.add.sprite(xpos, this.player.y, "infected")
+            this.player.setCollideWorldBounds(true)
             //EDIT GAME STATE
         },null, this)
 
