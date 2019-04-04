@@ -20,7 +20,7 @@ class GameScene extends Phaser.Scene{
         
         this.add.sprite(500, 500, "backgroundGame")
         this.walls = this.physics.add.staticGroup();
-        this.player = this.physics.add.sprite(150, 400, "livePlayer")
+        this.player = this.physics.add.sprite(150, 440, "livePlayer")
         this.player.setCollideWorldBounds(true);
         this.player.body.bounce.x = 1.0
         this.player.body.bounce.y = 1.0
@@ -95,8 +95,12 @@ class GameScene extends Phaser.Scene{
 
         //WRITE GAMESTATE WITH SELF.NAME
 
-        this.physics.collide(this.player, this.walls)
-        this.physics.collide(this.enemy, this.walls)
+        this.physics.collide(this.player, this.walls, function(){
+            alert("You've collided a wall")
+        }, null, this)
+        this.physics.collide(this.enemy, this.walls, function(){
+            alert("The enemy collided with a wall")
+        }, null, this)
         this.physics.overlap(this.player, this.enemy, function(){
             let xpos = this.player.x
             let ypos = this.player.y
@@ -112,7 +116,8 @@ class GameScene extends Phaser.Scene{
             this.player = this.physics.add.sprite(xpos, this.player.y, "infected")
             this.player.setCollideWorldBounds(true)
             //post and change to infected scene
-            this.scene.start("YeetScene")
+            //this.scene.start("YeetScene")
+            alert("You've Been Tagged")
             
         },null, this)
 
