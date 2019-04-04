@@ -29,7 +29,7 @@ class GameScene extends Phaser.Scene{
         this.enemy.body.bounce.x = 1.0
         this.enemy.body.bounce.y = 1.0
 
-        
+        this.key_down_text = this.add.text(990, 700, "", { fontSize: '32px', fill: '#000' }), this;
 
         var level = [
             "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -83,6 +83,8 @@ class GameScene extends Phaser.Scene{
 
         this.cursors = this.input.keyboard.createCursorKeys();
 
+        
+
 
     }
 
@@ -96,10 +98,10 @@ class GameScene extends Phaser.Scene{
         //WRITE GAMESTATE WITH SELF.NAME
 
         this.physics.collide(this.player, this.walls, function(){
-            alert("You've collided a wall")
+            //alert("You've collided a wall")
         }, null, this)
         this.physics.collide(this.enemy, this.walls, function(){
-            alert("The enemy collided with a wall")
+            //alert("The enemy collided with a wall")
         }, null, this)
         this.physics.overlap(this.player, this.enemy, function(){
             let xpos = this.player.x
@@ -121,21 +123,25 @@ class GameScene extends Phaser.Scene{
             
         },null, this)
 
-        //this.player.body.velocity.x = 0
-        //this.player.body.velocity.y = 0
-        //this.enemy.body.velocity.x = 0
-        //this.enemy.body.velocity.y = 0
+        this.player.body.velocity.x = 0
+        this.player.body.velocity.y = 0
+        this.enemy.body.velocity.x = 0
+        this.enemy.body.velocity.y = 0
         
         if (this.key_A.isDown){
             this.player.body.velocity.x = -150
+            this.key_down_text.setText("A")
         }else if (this.key_D.isDown){
             this.player.body.velocity.x = 150;
+            this.key_down_text.setText("D")
         }
     
         if (this.key_W.isDown){
             this.player.body.velocity.y = -150
+            this.key_down_text.setText("W")
         }else if (this.key_S.isDown){
             this.player.body.velocity.y = 150;
+            this.key_down_text.setText("S")
         }
 
         if (this.cursors.left.isDown){
@@ -154,6 +160,5 @@ class GameScene extends Phaser.Scene{
         
     }
 
-    
 
 }

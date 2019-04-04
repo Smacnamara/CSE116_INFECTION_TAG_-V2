@@ -12,6 +12,8 @@ var config = {
 
 };
 
+
+var key_down
 var WSpost
 var playername = ""
 var game = new Phaser.Game(config)
