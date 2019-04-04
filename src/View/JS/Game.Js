@@ -12,5 +12,7 @@ var config = {
 
 };
 
+var WSpost
+var playername = ""
 var game = new Phaser.Game(config)
 

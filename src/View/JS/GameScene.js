@@ -22,13 +22,17 @@ class GameScene extends Phaser.Scene{
         this.walls = this.physics.add.staticGroup();
         this.player = this.physics.add.sprite(150, 400, "livePlayer")
         this.player.setCollideWorldBounds(true);
+        this.player.body.bounce.x = 1.0
+        this.player.body.bounce.y = 1.0
         this.enemy = this.physics.add.sprite(800, 300, "infected")
         this.enemy.setCollideWorldBounds(true);
+        this.enemy.body.bounce.x = 1.0
+        this.enemy.body.bounce.y = 1.0
 
         
 
         var level = [
-            "xxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             "x                        x",
             "x                        x",
             "x                        x",
@@ -36,7 +40,32 @@ class GameScene extends Phaser.Scene{
             "x                        x",
             "x                        x",
             "x                        x",
-            "xxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "xxxxxxx            xxxxxxxxxxxxxxxxxxxxxxxxx",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "xxxxxxxxxx",
+            "xxxxx",
+            "xx                                      xxxxxxxxxxx",
+            "                                              xxxxx",
+            "                                                  x",
+            "                      xxxxxxxx",
+            "                      xxxxxxxx",
+            "                         xxxxx",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "     xxxxxxxxxxxx",
+            "     xxxxxxx",
+            "     xxx" 
         ]
 
         for(var i = 0; i < level.length; i+=1 ){
@@ -62,24 +91,35 @@ class GameScene extends Phaser.Scene{
 
         //UPDATE OTHER SPRITES
 
-        //WRITE GAMESTATE
+        //IF NAME BLANK ASSIGN SELF.NAME TO LEN JSON+1
+
+        //WRITE GAMESTATE WITH SELF.NAME
 
         this.physics.collide(this.player, this.walls)
         this.physics.collide(this.enemy, this.walls)
         this.physics.overlap(this.player, this.enemy, function(){
             let xpos = this.player.x
             let ypos = this.player.y
+            this.WSpost = {
+                "player": this.playername,
+                "pos": {
+                    'x':xpos,
+                    'y': ypos
+                },
+                "status": "infected"
+            }
             this.player.destroy()
             this.player = this.physics.add.sprite(xpos, this.player.y, "infected")
             this.player.setCollideWorldBounds(true)
+            //post and change to infected scene
             this.scene.start("YeetScene")
-            //EDIT GAME STATE
+            
         },null, this)
 
-        this.player.body.velocity.x = 0
-        this.player.body.velocity.y = 0
-        this.enemy.body.velocity.x = 0
-        this.enemy.body.velocity.y = 0
+        //this.player.body.velocity.x = 0
+        //this.player.body.velocity.y = 0
+        //this.enemy.body.velocity.x = 0
+        //this.enemy.body.velocity.y = 0
         
         if (this.key_A.isDown){
             this.player.body.velocity.x = -150
