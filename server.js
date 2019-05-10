@@ -45,7 +45,9 @@ io.on('connection', function (socket) {
         players[socket.id].x = Data.x;
         players[socket.id].y = Data.y;
         players[socket.id].team = Data.team;
+
         socket.broadcast.emit('UpdatePlayer', players[socket.id])
+        
     });
   });
 
